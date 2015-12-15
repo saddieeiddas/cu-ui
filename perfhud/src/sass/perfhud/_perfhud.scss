@@ -1,0 +1,168 @@
+/**
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+body {
+  overflow: hidden;
+  cursor: default;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+// .cu-window-content:before {
+//   opacity: 0.3 !important;
+// }
+
+.cu-window-content {
+  text-shadow: 0 0 2px #000 !important;
+}
+
+#perfhud {
+  width: 310px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+
+  .perfhud-fps {
+    text-align: center;
+    span {
+      font-size: 120%;
+    }
+    small {
+      font-size: 80%;
+    }
+  }
+
+  .perfhud-content {
+    padding-bottom: 5px;
+  }
+
+  .perfhud-select-container {
+    padding: 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .perfhud-select {
+    color: white;
+    cursor: pointer;
+    position: relative;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+
+    .perfhud-select-active {
+      border-radius: 3px;
+      padding-left: 5px;
+      padding: 3px 5px;
+      &:before, &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+      &:before {
+        background: rgba(0,0,0,0.4);
+        border-radius: 3px;
+      }
+      &:after {
+        content: "\25BC";
+        height: 1em;
+        font-size: .625em;
+        line-height: 1;
+        left: auto;
+        right: 1em;
+        top: 50%;
+        margin-top: -.5em;
+        position: absolute;
+        pointer-events: none;
+        color: #dfdfdf;
+      }
+    }
+
+    .perfhud-select-options {
+      z-index: 2;
+      position: absolute;
+      display: none;
+      border-radius: 0px 0px 3px 3px;
+      border-top: none;
+      width: 100%;
+      border-top: 1px solid #555;
+      font-weight: 500;
+      &:before, &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+      &:before {
+        background: #222;
+        border-radius: 0px 0px 3px 3px;
+      }
+      .perfhud-select-option {
+        padding: 3px 5px;
+        &:hover {
+          background: #AA9739;
+        }
+        &:last-child {
+          border-radius: 0px 0px 3px 3px;
+        }
+      }
+    }
+
+    &.perfhud-select-open {
+      .hud-select-active {
+        border-radius: 3px 3px 0px 0px;
+        padding-left: 5px;
+        &:before {
+          background: #151515;
+          border-radius: 3px 3px 0px 0px;
+        }
+      }
+      .perfhud-select-options {
+        display: block;
+      }
+    }
+  }
+
+}
+
+.perfhud-minimized {
+  width: 140px;
+  float: right;
+  .perfhud-content {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
+
+::-webkit-scrollbar-corner {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
