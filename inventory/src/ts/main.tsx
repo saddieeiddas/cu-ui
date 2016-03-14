@@ -4,11 +4,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import {events} from 'camelot-unchained';
+import {events, client} from 'camelot-unchained';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {InventoryWindow} from './components/inventory-window';
 
 events.on('init', () => {
   ReactDOM.render(<InventoryWindow />, document.getElementById('inventory'));
+  client.SubscribeInventory(true);
 });
