@@ -23,6 +23,6 @@
   "handlesLogging": false,
   "handlesLogin": false,
   "handlesPlot": true,
-  "hidden": false,
+  "hidden": true,
   "layer": 1
 }

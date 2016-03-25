@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {client, events, plotPermissions, postPlotPermissions} from 'camelot-unchained';
+import {client, events, plotPermissions, restAPI} from 'camelot-unchained';
 
 
 interface PlotControlUIState {
@@ -46,7 +46,11 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
   }
 
   changePermissions = (perm: plotPermissions) => {
-    postPlotPermissions({characterID: this.state.charID, loginToken: client.loginToken, entityID: this.state.entityID, newPermissions: perm});
+    restAPI.postPlotPermissions({characterID: this.state.charID, loginToken: client.loginToken, entityID: this.state.entityID, newPermissions: perm});
+  }
+  
+  releasePlot = () => {
+      restAPI.postReleasePlot({characterID: this.state.charID, loginToken: client.loginToken, entityID: this.state.entityID});
   }
 
   // Render the unit frame using character data-perm
@@ -97,6 +101,7 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
             <button className="permButton" onMouseDown={this.changePermissions.bind(this, plotPermissions.Guild)}>Guild</button>
             <button className="permButton" onMouseDown={this.changePermissions.bind(this, plotPermissions.Realm)}>Realm</button>
             <button className="permButton" onMouseDown={this.changePermissions.bind(this, plotPermissions.All)}>All</button>
+            <button className="permButton" onMouseDown={this.releasePlot.bind(this)}>Release Plot</button>
           </ul>
         </div>
       );

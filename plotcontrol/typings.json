@@ -6,6 +6,7 @@
     "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#ca5bfe76d2d9bf6852cbc712d9f3e0047c93486e"
   },
   "dependencies": {
-    "camelot-unchained": "github:csegames/camelot-unchained-client-library"
+    "camelot-unchained": "github:csegames/camelot-unchained-client-library",
+    "es6-promise": "github:typed-typings/npm-es6-promise#fb04188767acfec1defd054fc8024fafa5cd4de7"
   }
 }
