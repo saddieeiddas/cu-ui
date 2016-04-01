@@ -16,9 +16,9 @@ $cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
   opacity: 0.6;
 }
 
-.permissionbutton-list {
+.list {
   overflow: auto;
-  height: calc(100% - 50px);
+  height: calc(100% - 80px);
   list-style: none;
   padding: 4px 2px 0px 5px;
   li {
@@ -28,7 +28,7 @@ $cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
   }
 }
 
-.permButton {
+.plotButton {
   width: 105px;
   height: 29px;
   font-family: 'Cinzel', serif;
@@ -39,19 +39,19 @@ $cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
   outline: none;
 }
 
-.permButton:disabled {
+.plotButton:disabled {
   -webkit-filter: brightness(0.4);
   filter: brightness(0.4);
 }
 
-.permButton:not(:disabled) {
+.plotButton:not(:disabled) {
   cursor: pointer;
 }
 
-.permButton:hover:not(:disabled) {
+.plotButton:hover:not(:disabled) {
   background-position: 0 -29px;
 }
 
-.permButton:active:not(:disabled) {
+.plotButton:active:not(:disabled) {
   background-position: 0 -58px;
 }
