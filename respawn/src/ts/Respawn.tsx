@@ -38,24 +38,20 @@ class Respawn extends React.Component<RespawnProps, RespawnState> {
     // monitor player health, show/hide respawn ui accordingly
     cuAPI.OnCharacterHealthChanged((health: number) => {
       if (health) {
-        console.log('got health, hide respawn UI');
         if (this.state.visible) {
           this.hide();
         }
       } else {
-        console.log('no health, show respawn UI');
         this.show();
       }
     });
 
     cuAPI.OnCharacterFactionChanged((cf: number) => {
-      console.log('faction is ' + cf);
       switch(cf) {
         case faction.ARTHURIAN: this.faction = 'A'; break;
         case faction.TDD: this.faction = 'T'; break;
         case faction.VIKING: this.faction = 'V'; break;
       }
-      console.log('this.faction is ' + this.faction);
     });
   }
 
