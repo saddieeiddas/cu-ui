@@ -39,6 +39,8 @@ import {client, events, plotPermissions, restAPI} from 'camelot-unchained';
       name: string;
       percentComplete: number;
       estTimeRemaining: number;
+      subName: string;
+      amtNeeded: number;
   }
   
   class ReceiveQueueStatusModel {
@@ -242,28 +244,49 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
                   <div>"Inf"</div>  
                 );
             }
+         
             let upArrow: JSX.Element;
             if (i != 0) {
                 upArrow = (
                   <a onMouseDown={this.reorderBuildQueue.bind(this, i, i-1)} className="plotMoveUp">↑</a>  
                 );
             }
+
             let downArrow: JSX.Element;
             if (i != this.state.queue.length - 1) {
                 downArrow = (
-                  <a onMouseDown={this.reorderBuildQueue.bind(this, i, i+1)} className="plotMoveDown">↓</a>  
+                  <a onMouseDown={this.reorderBuildQueue.bind(this, i, i+1)} className="plotMoveDown">↓</a>
                 );
             }
-            renderedBlueprint = (
-              <li className="blueprint">
-                {blueprint.name}
-                {timeRemaining}
-                <progress value={blueprint.percentComplete.toString()} max="1"></progress>
-                {upArrow}
-                {downArrow}
-                <a onMouseDown={this.removeQueuedBlueprint.bind(this)} className="cu-window-close"></a>
-              </li>
-            );
+            
+            if (blueprint.subName == "") {
+              renderedBlueprint = (
+                <li className="blueprint">
+                  {blueprint.name}
+                  {timeRemaining}
+                  <progress value={blueprint.percentComplete.toString()} max="1"></progress>
+                  {upArrow}
+                  {downArrow}
+                  <a onMouseDown={this.removeQueuedBlueprint.bind(this)} className="cu-window-close"></a>
+                </li>
+              );
+            }
+            else
+            {
+                renderedBlueprint = (
+                  <li className="matBlueprint">
+                    {blueprint.name}
+                    {timeRemaining}
+                    <progress value={blueprint.percentComplete.toString()} max="1"></progress>
+                    {upArrow}
+                    {downArrow}
+                    <a onMouseDown={this.removeQueuedBlueprint.bind(this)} className="cu-window-close"></a>
+                    <div>
+                      {blueprint.amtNeeded} {blueprint.subName} needed to complete.
+                    </div>
+                  </li>
+                );
+            }
             blueprints.push(renderedBlueprint);
         }
         renderedQueue = (
