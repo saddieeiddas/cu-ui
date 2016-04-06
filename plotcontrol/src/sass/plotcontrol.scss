@@ -55,3 +55,17 @@ $cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
 .plotButton:active:not(:disabled) {
   background-position: 0 -58px;
 }
+
+.plotMoveUp {
+    width: 16px;
+    height: 17px;
+    border: none;
+    outline: none;
+}
+
+.plotMoveDown {
+    width: 16px;
+    height: 17px;
+    border: none;
+    outline: none;
+}

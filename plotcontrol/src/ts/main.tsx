@@ -26,7 +26,7 @@ import {client, events, plotPermissions, restAPI} from 'camelot-unchained';
       characterID: string;
       loginToken: string;
       entityID: string;
-      sourceIndex: number;
+      indexToMove: number;
       destinationIndex: number;
   }
   
@@ -84,7 +84,7 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
       queue: [],
       queueState: ""
     });
-    setInterval(() => {if (this.state.plotOwned) this.getQueueStatus()}, 5000); 
+    setInterval(() => {if (this.state.plotOwned) this.getQueueStatus()}, 2000); 
   }
 
   componentWillUnmount() {
@@ -121,7 +121,7 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
         characterID: this.state.charID,
         loginToken: client.loginToken,
         entityID: this.state.entityID,
-        sourceIndex: indexSource,
+        indexToMove: indexSource,
         destinationIndex: indexDestination
       };
       
@@ -154,6 +154,15 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
         }
     }
     return -1;
+  }
+  
+  isbefore(a: Node, b: Node) {
+    if (a.parentNode == b.parentNode) {
+      let aIndex = this.getListIndex(a);
+      let bIndex = this.getListIndex(b);
+      return aIndex < bIndex;
+    }
+    return false;
   }
   
   renderPermissions() {
@@ -233,12 +242,25 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
                   <div>"Inf"</div>  
                 );
             }
-         
+            let upArrow: JSX.Element;
+            if (i != 0) {
+                upArrow = (
+                  <a onMouseDown={this.reorderBuildQueue.bind(this, i, i-1)} className="plotMoveUp">↑</a>  
+                );
+            }
+            let downArrow: JSX.Element;
+            if (i != this.state.queue.length - 1) {
+                downArrow = (
+                  <a onMouseDown={this.reorderBuildQueue.bind(this, i, i+1)} className="plotMoveDown">↓</a>  
+                );
+            }
             renderedBlueprint = (
               <li className="blueprint">
                 {blueprint.name}
                 {timeRemaining}
                 <progress value={blueprint.percentComplete.toString()} max="1"></progress>
+                {upArrow}
+                {downArrow}
                 <a onMouseDown={this.removeQueuedBlueprint.bind(this)} className="cu-window-close"></a>
               </li>
             );
