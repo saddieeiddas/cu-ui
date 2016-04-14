@@ -11,5 +11,5 @@ import {events, core, client} from 'camelot-unchained';
 import {CraftingUI} from './components/crafting-ui';
 
 events.on('init', () => {
-	ReactDom.render(<CraftingUI/>, document.getElementById("cse-ui-crafting"));
+  ReactDom.render(<CraftingUI/>, document.getElementById("cse-ui-crafting"));
 });

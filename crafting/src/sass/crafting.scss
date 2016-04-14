@@ -75,59 +75,59 @@ $cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
 }
 
 #crafting-window{
-	position:absolute;
-	top:20px;
-	left:0px;
-	width:650px;
-	height:450px;
-	z-index:1000;
-	overflow: hidden;
+  position:absolute;
+  top:20px;
+  left:0px;
+  width:650px;
+  height:450px;
+  z-index:1000;
+  overflow: hidden;
 }
 
 .crafting-active{
-	display:block;
+  display:block;
 }
 
 .crafting-inactive{
-	display:none;
+  display:none;
 }
 
 .cmdList{
-	height: 350px;
-	max-height: 350px;
-	overflow: auto;
-	padding-bottom:50px;
+  height: 350px;
+  max-height: 350px;
+  overflow: auto;
+  padding-bottom:50px;
 }
 .cmdItem{
-	margin:10px 5px;
+  margin:10px 5px;
 }
 .cmdItem-cmd{
 
 }
 .cmdItem-info{
-	padding-left:10px;
+  padding-left:10px;
 }
 .cmdItem-params{
-	color:#00A2E8;
+  color:#00A2E8;
 }
 .cmdItem-ex{
-	color:#777;
+  color:#777;
 }
 
 #input-crCmd{
-	position: absolute;
-	bottom: 12px;
-	left: 25px;
-	width: 500px;
-	height:26px;
-	line-height: 26px;
-	padding: 2px;
-	background: transparent;
-	border: 1px solid #555;
+  position: absolute;
+  bottom: 12px;
+  left: 25px;
+  width: 500px;
+  height:26px;
+  line-height: 26px;
+  padding: 2px;
+  background: transparent;
+  border: 1px solid #555;
 }
 
 #btn-crSubmit{
-	position: absolute;
-	bottom: 10px;
-	right: 18px;
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
 }
