@@ -12,5 +12,4 @@ import {CraftingUI} from './components/crafting-ui';
 
 events.on('init', () => {
 	ReactDom.render(<CraftingUI/>, document.getElementById("cse-ui-crafting"));
-	//client.SubscribeCrafting(true);
 });
