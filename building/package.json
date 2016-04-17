@@ -4,20 +4,20 @@
   "version": "0.1.0",
   "description": "Camelot Unchained UI - building",
   "license": "MPL-2.0",
-  "main": "dist/building.js",
+  "main": "src/ts/main.tsx",
   "author": "City State Entertainment, LLC <support@citystateentertainment.com>",
   "contributors": [
-    "Ortu"
+    "mehuge <mehuge@sorcerer.co.uk>",
+    "JB (codecorsair) <jb@codecorsair.com>"
   ],
   "keywords": [
     "Camelot",
     "Unchained",
     "cu",
-    "cu-ui",
-    "crafting"
+    "cu-ui"
   ],
   "files": [
-    "dist/",
+    "lib/",
     "package.json",
     "README.md",
     "LICENSE"
@@ -48,20 +48,24 @@
     "prebuild": "npm run clean -s",
     "publish": "npm run build",
     "serve": "http-server -p 9000 dist/",
-    "clean:hatchery": "(rmdir /s /q %localappdata%/CSE/CamelotUnchained/4/INTERFACE/%npm_package_config_name%) ^& exit 0",
-    "copy:hatchery": "(robocopy dist\\ %localappdata%/CSE/CamelotUnchained/4/INTERFACE/%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
+    "clean:hatchery": "(rmdir /s /q %localappdata%\\CSE\\CamelotUnchained\\4\\INTERFACE\\%npm_package_config_name%) ^& exit 0",
+    "copy:hatchery": "(robocopy dist\\ %localappdata%\\CSE\\CamelotUnchained\\4\\INTERFACE\\%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
     "build:hatchery": "npm run build && npm run clean:hatchery && npm run copy:hatchery",
-    "clean:wyrmling": "(rmdir /s /q %localappdata%/CSE/CamelotUnchained/10/INTERFACE/%npm_package_config_name%) ^& exit 0",
-    "copy:wyrmling": "(robocopy dist\\ %localappdata%/CSE/CamelotUnchained/10/INTERFACE/%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
+    "clean:wyrmling": "(rmdir /s /q %localappdata%\\CSE\\CamelotUnchained\\10\\INTERFACE\\%npm_package_config_name%) ^& exit 0",
+    "copy:wyrmling": "(robocopy dist\\ %localappdata%\\CSE\\CamelotUnchained\\10\\INTERFACE\\%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
     "build:wyrmling": "npm run build && npm run clean:wyrmling && npm run copy:wyrmling",
-    "clean:cube": "(rmdir /s /q %localappdata%/CSE/CamelotUnchained/27/INTERFACE/%npm_package_config_name%) ^& exit 0",
-    "copy:cube": "(robocopy dist\\ %localappdata%/CSE/CamelotUnchained/27/INTERFACE/%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
+    "clean:cube": "(rmdir /s /q %localappdata%\\CSE\\CamelotUnchained\\27\\INTERFACE\\%npm_package_config_name%) ^& exit 0",
+    "copy:cube": "(robocopy dist\\ %localappdata%\\CSE\\CamelotUnchained\\27\\INTERFACE\\%npm_package_config_name%\\ /s) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
     "build:cube": "npm run build && npm run clean:cube && npm run copy:cube"
   },
   "dependencies": {
     "camelot-unchained": "latest",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "es6-promise": "^3.1.2",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.4.2",
+    "redux": "^3.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
