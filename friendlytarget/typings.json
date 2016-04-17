@@ -6,7 +6,8 @@
     "react-dom": "github:DefinitelyTyped/DefinitelyTyped/react/react-dom.d.ts#ca5bfe76d2d9bf6852cbc712d9f3e0047c93486e",
     "eventemitter3": "github:DefinitelyTyped/DefinitelyTyped/eventemitter3/eventemitter3.d.ts#acf0d0f007bcfe03b62fcf14a68e6d275228640d",
     "reflux": "github:CUModSquad/Typings/reflux/reflux.d.ts",
-    "reflux-core": "github:CUModSquad/Typings/reflux/reflux-core.d.ts"
+    "reflux-core": "github:CUModSquad/Typings/reflux/reflux-core.d.ts",
+    "es6-promise": "github:CUModSquad/Typings/es6-promise/es6-promise.d.ts"
   },
   "dependencies": {
     "camelot-unchained": "github:csegames/camelot-unchained-client-library"
