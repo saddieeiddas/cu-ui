@@ -45,6 +45,8 @@ import {client, events, plotPermissions, restAPI} from 'camelot-unchained';
   
   class ReceiveQueueStatusModel {
       status: string;
+      numContributors: number;
+      maxContributors: number;
       blueprints: BlueprintModel[];
   }
   
@@ -57,6 +59,7 @@ interface PlotControlUIState {
   viewingQueue: boolean;
   queue: BlueprintModel[];
   queueState: string;
+  numContributors: number;
 }
 interface PlotControlUIProps {}
 
@@ -71,7 +74,7 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
 
   onPlotStatus = (eventData: any) => {
     this.setState({plotOwned: eventData.plotOwned, currentPermissions: eventData.permissions, charID: eventData.charID, entityID: eventData.entityID, 
-        viewingQueue: this.state.viewingQueue, queue: this.state.queue, queueState: this.state.queueState});
+        viewingQueue: this.state.viewingQueue, queue: this.state.queue, queueState: this.state.queueState, numContributors: this.state.numContributors});
     this.getQueueStatus();
   }
 
@@ -84,7 +87,8 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
       entityID: "",
       viewingQueue: false,
       queue: [],
-      queueState: ""
+      queueState: "",
+      numContributors: 0
     });
     setInterval(() => {if (this.state.plotOwned) this.getQueueStatus()}, 2000); 
   }
@@ -135,15 +139,18 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
         characterID: this.state.charID,
         loginToken: client.loginToken
       };
-      
-      restAPI.postGetQueueStatus(model).then((data: ReceiveQueueStatusModel) => this.setState({queue: data.blueprints, queueState: data.status,
+                                                                                                                                                                 
+      restAPI.postGetQueueStatus(model).then((data: ReceiveQueueStatusModel) => this.setState({queue: data.blueprints, queueState: data.status, 
+          // This calculation could easily be handled server-side, but sending both bits of data
+          // lets the UI be more customizable.
+          numContributors: Math.min(data.numContributors, data.maxContributors),
           plotOwned: this.state.plotOwned, currentPermissions: this.state.currentPermissions,
           charID: this.state.charID, entityID: this.state.entityID, viewingQueue: this.state.viewingQueue}), (error: any) => console.log(error));
   }
   
   toggleQueue = () => {
       this.setState({plotOwned: this.state.plotOwned, currentPermissions: this.state.currentPermissions, charID: this.state.charID, entityID: this.state.entityID, 
-        viewingQueue: !this.state.viewingQueue, queue: this.state.queue, queueState: this.state.queueState});
+        viewingQueue: !this.state.viewingQueue, queue: this.state.queue, queueState: this.state.queueState, numContributors: this.state.numContributors});
   }
   
   private source: Node;
@@ -290,7 +297,10 @@ class PlotControlUI extends React.Component<PlotControlUIProps, PlotControlUISta
             blueprints.push(renderedBlueprint);
         }
         renderedQueue = (
-        <ul className="list">{blueprints}</ul>   
+        <ul className="list">
+        Allies on Plot: {this.state.numContributors}
+        {blueprints}
+        </ul>   
         );
       }
       else
