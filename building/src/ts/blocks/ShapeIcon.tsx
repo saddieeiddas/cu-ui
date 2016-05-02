@@ -15,6 +15,7 @@ export interface ShapeIconProps {
   selected: boolean;
 };
 export interface ShapeIconState {
+  hover: boolean;
 };
 
 class ShapeIcon extends React.Component<ShapeIconProps, ShapeIconState> {
@@ -23,10 +24,15 @@ class ShapeIcon extends React.Component<ShapeIconProps, ShapeIconState> {
 
   constructor(props: ShapeIconProps) {
     super(props);
+    this.state = { hover: false };
   }
 
   onClick = (): void => {
     store.dispatch({ type: 'SELECT_SHAPE', shape: this.props.shape } as any);
+  }
+
+  onhover = (e: React.MouseEvent) => {
+    this.setState({ hover: e.type == "mouseenter" });
   }
 
   render() {
@@ -34,10 +40,13 @@ class ShapeIcon extends React.Component<ShapeIconProps, ShapeIconState> {
     return (
       <div className={classes.join(' ')} onClick={this.onClick}>
         <img src={ "data:image/png;base64," + this.props.icon }/>
-        <ToolTip
-          id={this.props.id}
-          shape={this.props.shape}
-          icon={this.props.icon}/>
+        { this.state.hover
+          ? <ToolTip
+              id={this.props.id}
+              shape={this.props.shape}
+              icon={this.props.icon}/>
+          : undefined
+        }
       </div>
     );
   }

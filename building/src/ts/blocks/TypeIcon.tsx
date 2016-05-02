@@ -17,6 +17,7 @@ export interface TypeIconProps {
   selected: boolean;
 };
 export interface TypeIconState {
+  hover: boolean;
 };
 
 class TypeIcon extends React.Component<TypeIconProps, TypeIconState> {
@@ -24,6 +25,7 @@ class TypeIcon extends React.Component<TypeIconProps, TypeIconState> {
 
   constructor(props: TypeIconProps) {
     super(props);
+    this.state = { hover: false };
   }
 
   onClick = (): void => {
@@ -31,16 +33,25 @@ class TypeIcon extends React.Component<TypeIconProps, TypeIconState> {
     store.dispatch({ type: 'SELECT_BLOCK', id: this.props.id } as any);
   }
 
+  onhover = (e: React.MouseEvent) => {
+    this.setState({ hover: e.type == "mouseenter" });
+  }
+
   render() {
     const classes: string[] = [ 'block-icon', 'type-icon', this.props.selected ? 'selected' : undefined ];
     return (
       <div className={classes.join(' ')} onClick={this.onClick}>
-        <img src={ "data:image/png;base64," + this.props.icon }/>
-        <ToolTip
-          id={this.props.id}
-          type={this.props.type}
-          shape={this.props.shape}
-          icon={this.props.icon}/>
+        <img src={ "data:image/png;base64," + this.props.icon }
+          onMouseEnter={this.onhover} onMouseLeave={this.onhover}
+          />
+          { this.state.hover
+            ? <ToolTip
+                id={this.props.id}
+                type={this.props.type}
+                shape={this.props.shape}
+                icon={this.props.icon}/>
+            : undefined
+          }
       </div>
     );
   }
