@@ -4,14 +4,12 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
-@import "settings.scss";
-
-html {
-  width: 100%;
-  height: 100%;
+html, body {
+  overflow: hidden;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  background-image: url('../images/cube-bg.jpg');
+  background-size: cover;
 }
 
 body {
@@ -47,3 +45,13 @@ body {
     }
   }
 }
+
+.building {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+@import './widgets/SelectionView/index';
+@import './widgets/Actionbar/index';
+@import './widgets/BuildPanel/index';

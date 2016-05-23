@@ -1,0 +1,89 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+import {BuildPane, BuildPaneType} from '../../lib/BuildPane';
+import MaterialAndShape from '../../widgets/MaterialAndShape';
+import RecentSelections from '../../widgets/RecentSelections';
+
+const SELECT_TAB = 'buildpanel/panes/SELECT_TAB';
+
+export function selectTab(row: number, index: number) {
+  return {
+    type: SELECT_TAB,
+    row: row,
+    index: index,
+  }
+}
+
+
+
+
+
+
+function generateBuildPane(type: BuildPaneType) : BuildPane {
+  // we generate each pane by type. This allows us to
+  // save sorting information between sessions.
+  switch(type) {
+    case BuildPaneType.Blocks:
+      return {
+        type: type,
+        title: 'blocks',
+        minTitle: 'blocks',
+        data: {},
+        component: MaterialAndShape,
+      };
+    case BuildPaneType.Recent:
+      return {
+        type: type,
+        title: 'recently used',
+        minTitle: 'recent',
+        data: {},
+        component: RecentSelections
+      }
+  }
+}
+
+function generatePanes() : Array<Array<BuildPane>>{
+  var panes = new Array<Array<BuildPane>>();
+  panes.push(new Array<BuildPane>());
+  panes[0].push(generateBuildPane(BuildPaneType.Blocks))
+  panes.push(new Array<BuildPane>());
+  panes[1].push(generateBuildPane(BuildPaneType.Recent))
+  return panes;
+}
+
+function generateActiveIndices() : Array<number> {
+  var activeIndices = new Array<number>();
+  activeIndices.push(0);
+  activeIndices.push(0);
+  return activeIndices;
+}
+
+export interface PanesState {
+  
+  // 2d grid of panes, sorted [rows][index]
+  panes?: Array<Array<BuildPane>>;
+  
+  // within each row which index is active? default 0
+  activeIndices?: Array<number>;
+}
+
+const initialState : PanesState = {
+  panes: generatePanes(),
+  activeIndices: generateActiveIndices(),
+}
+
+export default function reducer(state: PanesState = initialState, action: any = {}) {
+  switch(action.type) {
+    case SELECT_TAB:
+      let activeIndices = state.activeIndices.slice();
+      activeIndices[action.row] = action.index;
+      return Object.assign({}, state, {
+        activeIndices: activeIndices,
+      });
+    default: return state;
+  }
+}

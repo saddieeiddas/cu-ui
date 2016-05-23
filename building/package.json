@@ -67,12 +67,13 @@
   },
   "dependencies": {
     "camelot-unchained": "latest",
-    "es6-promise": "^3.1.2",
+    "es6-promise": "^3.2.1",
     "object-assign": "^4.0.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-redux": "^4.4.2",
-    "redux": "^3.4.0"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",

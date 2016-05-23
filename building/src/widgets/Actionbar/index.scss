@@ -1,0 +1,56 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+ 
+ .action-bar {
+   height: 330px;
+   position: fixed;
+   left: 0;
+   top: calc(50% - 165px);   
+   margin: auto;
+   
+   header {
+     border-top: 0.2px solid rgba(255, 255, 255, 0.2);
+     border-bottom: 0.2px solid rgba(255, 255, 255, 0.2);
+     font-size: 10px;
+     color: #efefef;
+     text-align: right;
+     padding: 2px 4px;
+     background-color: rgba(0, 0, 0, 0.75);
+     
+     span {
+       cursor: pointer;
+     }
+   }
+   
+   ul {
+     list-style: none;
+     margin: 0;
+     padding: 10px 5px;
+     background-color: rgba(0, 0, 0, 0.85);
+   }
+   
+   li {
+     margin: 2px 0px;
+     cursor: pointer;
+   }
+   
+   em {
+     margin: 3px;
+     padding: 3px;
+     font-size: 10px;
+     color: #eaeaea;
+   }
+   
+   .icon {
+     fill: #eaeaea;
+     width: 18px;
+     height: 18px;
+     &:hover {
+       fill: lighten(#eaeaea, 20%);
+     }
+   }
+ }
+ 
