@@ -49,6 +49,7 @@ class BuildPanel extends React.Component<BuildPanelProps, BuildPanelState> {
           <span className='min-max' onClick={() => this.onMinMax()}>
           {this.state.minimized ? '<<' : '>>'}
           </span>
+          <span className='info'>?</span>
         </header>
         {this.props.panesState.panes.map((rowPanes: BuildPane[], row: number) => {
           return (<div className='row' key={row}>

@@ -6,9 +6,15 @@
 
 .recent-selections {
   img {
+    cursor: pointer;
     display: inline-block;
     height: 20px;
     width: 20px;
     margin: 5px;
+    
+    &:hover {
+      filter: brightness(120%);
+      -webkit-filter: brightness(120%);
+    }
   }
 }

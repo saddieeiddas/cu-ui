@@ -13,6 +13,8 @@
  }
  
 .build-panel {
+  -webkit-user-select: none;
+  cursor: default;
   position: fixed;
   right: 0;
   top: 0;
@@ -24,15 +26,24 @@
   }
    
   header {
-   color: #eaeaea;
-   font-size: 10px;
-   background-color: rgba(0, 0, 0, 0.75);
-   border-bottom: 0.2px solid rgba(255, 255, 255, 0.2);
-   border-top: 0.2px solid rgba(255, 255, 255, 0.2);
+    color: #eaeaea;
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-bottom: 0.2px solid rgba(255, 255, 255, 0.2);
+    border-top: 0.2px solid rgba(255, 255, 255, 0.2);
   }
   
   .min-max {
     cursor: pointer;
+  }
+  
+  .info {
+    float: right;
+    cursor: pointer;
+    margin-right: 5px;
+    &:hover {
+      color: white;
+    }
   }    
   
   .tab-content {
