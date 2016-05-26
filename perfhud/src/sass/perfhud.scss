@@ -49,14 +49,12 @@ body {
   text-shadow: 0 0 5px #6c0c00;
 }
 
-
 .perfhud-select {
   position: relative;
   line-height: 1em;
   border-bottom: 2px solid $border-color;
   background-color: $color-dark;
 }
-
 
 .perfhud-select-item {
   padding: 2px 5px;
@@ -77,6 +75,7 @@ body {
   display: inline-block;
   border-right: 2px solid $border-color;
 }
+
 .perfhud-minimize:hover {
   background-color: $hover-color;
 }
