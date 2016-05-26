@@ -19,8 +19,8 @@ class ColorSelect extends React.Component<ColorSelectProps, ColorSelectState> {
   }
   
   renderColorBar = () => {
-    let hueStop;
-    let hueBarRect;
+    let hueStop: any;
+    let hueBarRect: any;
     for(let row = 0; row <= 300; ++row) {
       
     }
