@@ -16,13 +16,19 @@ body {
   font-family: sans-serif;
 }
 
+.cu-window-close {
+  line-height: 1em;
+  float: right;
+}
+
 .perfhud-select {
+  line-height: 1em;
   border-bottom: 2px solid lighten( $color-dark, 25% );
 }
 
 
 .perfhud-select-item {
-  padding: 5px;
+  padding: 2px 5px;
   display: inline-block;
   border-right: 2px solid lighten( $color-dark, 25% );
 }
@@ -37,7 +43,10 @@ body {
 }
 
 .perfhud-minimize {
-  padding: 5px;
+  padding: 2px 5px;
   display: inline-block;
   border-right: 2px solid lighten( $color-dark, 25% );
+}
+.perfhud-minimize:hover {
+  background-color: lighten( $color-dark, 25% );
 }

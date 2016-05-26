@@ -34,7 +34,11 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
       currentPage: null
     };
   }
-  
+
+  closeWindow(): void {
+    client.HideUI('perfhud');
+  }
+
   componentDidMount() {
     cuAPI.OnPerfUpdate(() => {
       this.updatePages();
@@ -125,6 +129,10 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
       return (<div className='perfhud-content' dangerouslySetInnerHTML={{__html: this.state.currentPage.html}} />);
   }
 
+  createPerfClose = () => {
+      return (<a onMouseDown={this.closeWindow.bind(this)} className="cu-window-close"></a>);
+  }
+
   render() {
     
     if (this.state.pages.length == 0) {
@@ -143,7 +151,8 @@ return (
         <div className='cu-window-content'>
             <div className='perfhud-select'>
               { this.createPerfMinimize(mini) }
-              {this.state.pages.map( (page, index) => this.createPerfSelect(page, index))}
+              { this.state.pages.map( (page, index) => this.createPerfSelect(page, index)) }
+              { this.createPerfClose() }
             </div>
             { this.createPerfContent(mini) }
         </div>
