@@ -12,16 +12,19 @@
    margin: auto;
    
    header {
-     border-top: 0.2px solid rgba(255, 255, 255, 0.2);
-     border-bottom: 0.2px solid rgba(255, 255, 255, 0.2);
-     font-size: 10px;
-     color: #efefef;
+     font-size: 9px;
+     color: #9f9893;
      text-align: right;
-     padding: 2px 4px;
-     background-color: rgba(0, 0, 0, 0.75);
+     padding: 0px 4px;
+     border-width:  1px 1px 0px 1px;
+     border-image: linear-gradient(to left, rgba(75, 70, 66, 0.20), rgba(75, 70, 66, 1), rgba(75, 70, 66, 0.20));
+     border-image-slice: 1;
+     background: linear-gradient( to left, rgb(19,19,19) 0%, rgba(0, 0, 0, 0.85) 100%);
      
      span {
        cursor: pointer;
+       width: 25px;
+       display: inline-block;
      }
    }
    
@@ -29,7 +32,10 @@
      list-style: none;
      margin: 0;
      padding: 10px 5px;
-     background-color: rgba(0, 0, 0, 0.85);
+     background: linear-gradient(#131313, rgba(0, 0, 0, 0.9));
+     border-width: 1px;
+     border-image: linear-gradient(to top left, rgba(75, 70, 66, 0.2), #4b4642);
+     border-image-slice: 1;
    }
    
    li {
@@ -41,15 +47,17 @@
      margin: 3px;
      padding: 3px;
      font-size: 10px;
-     color: #eaeaea;
+     color: #706B67;
+     font-style: normal;
    }
    
    .icon {
-     fill: #eaeaea;
+     fill: #ADA5A0;
      width: 18px;
      height: 18px;
+     transition: all .1s ease-in-out;
      &:hover {
-       fill: lighten(#eaeaea, 20%);
+       fill: lighten(#ADA5A0, 30%);
      }
    }
  }

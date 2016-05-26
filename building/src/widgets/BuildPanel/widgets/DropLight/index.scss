@@ -11,26 +11,26 @@
 }
 
 .drop-light {
-  padding: 10px;
+  padding: 5px;
   .drop-light__controls {
     display: inline-block;
     width: calc(100% - 60px);
-    padding: 4px;
+    padding: 0px 4px;
+    font-size: 14px;
     input {
       color: #eaeaea;
       background: transparent;
       border: 0;
-      border-bottom: 1px dotted white;
+      border-bottom: 1px solid #7C7269;
       width: 40px;
-      margin: 5px;
       text-align: center;
       &:hover {
         border: 0;
-        border-bottom: 1px dotted white;
+        border-bottom: 1px solid #A99C90;
       }
       &:active {
         border: 0;
-        border-bottom: 1px dotted white;
+        border-bottom: 1px solid #514A44;
       }
     }
   }

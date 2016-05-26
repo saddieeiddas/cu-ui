@@ -5,11 +5,10 @@
  */
 
 .build-panel__material-and-shape {
-  padding: 10px;
+  
   
   header {
-    padding: 5px 10px;
-    color: #eaeaea;
+    color: #B0AAA6;
     text-transform: uppercase;
     font-size: 11px;
     border: 0;
@@ -19,6 +18,9 @@
 .build-panel__material-and-shape__menu {
   float: right;
   cursor: pointer;
+  font-size: 18px;
+  line-height: 10px;
+  height: 10px;
 }
 
 @import './components/MaterialView/index';

@@ -11,7 +11,7 @@
   height: 50px;
   background-color: darkgrey;
   margin: 5px;
-  border: 1px solid white;
+  border: 1px solid rgba(74, 69, 65, 0.5);
   cursor: pointer;
   
   .icon-bg {
@@ -20,13 +20,14 @@
     position: absolute;
     left: 2px;
     bottom: 2px;
-    padding: 0px 4.5px;
+    width: 18px;
+    height: 18px;
   }
   
   .edit-icon {
     position: relative;
-    left: -.5px;
-    top: -1.5px;
+    left: 2.5px;
+    top: -5.5px;
     width: 10px;
     height: 10px;
     fill: white;
