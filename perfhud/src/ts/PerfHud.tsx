@@ -117,9 +117,9 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
 
   createPerfMinimize = (min: boolean) => {
     if(min)
-      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, false)}> &lt;&lt;&lt; </span> )
+      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, false)}> &lt;&lt; </span> )
     else
-      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, true)}> &gt;&gt;&gt; </span> )
+      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, true)}> &gt;&gt; </span> )
   }
 
   createPerfContent = (min: boolean) => {
@@ -137,25 +137,21 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
     
     if (this.state.pages.length == 0) {
       return (
-        <div id={this.name} className={`${this.name} cu-window cu-window-transparent cu-window-auto-size`}>
-        <div className='cu-window-content'>
+        <div id={this.name} className={`${this.name} cu-window`}>
           <p>No pages provided to PerfHud</p>
-        </div>
       </div>
       )
     }
 
 let mini = this.state.minimized;
 return (
-      <div className={`${this.name} cu-window cu-window-transparent cu-window-auto-size`}>
-        <div className='cu-window-content'>
-            <div className='perfhud-select'>
-              { this.createPerfMinimize(mini) }
-              { this.state.pages.map( (page, index) => this.createPerfSelect(page, index)) }
-              { this.createPerfClose() }
-            </div>
-            { this.createPerfContent(mini) }
-        </div>
+      <div className={`${this.name} cu-window`}>
+          <div className='perfhud-select'>
+            { this.createPerfMinimize(mini) }
+            { this.state.pages.map( (page, index) => this.createPerfSelect(page, index)) }
+            { this.createPerfClose() }
+          </div>
+          { this.createPerfContent(mini) }
       </div>
     );
   }
