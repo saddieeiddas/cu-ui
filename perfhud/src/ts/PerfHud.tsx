@@ -7,9 +7,7 @@
 import {client, events} from 'camelot-unchained';
 import * as React from 'react';
 
-import PageSelect, {PageView} from './PageSelect';
-
-export interface PerfPage extends PageView {
+export interface PerfPage {
   id: number;
   shouldRemove?: boolean;
   name?: string;
@@ -27,12 +25,12 @@ declare const cuAPI: any;
 
 class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
   public name: string = 'perfhud';
-  
+
   constructor(props: PerfHudProps) {
     super(props);
     this.state = {
       pages: [],
-      minimized: false,
+      minimized: true,
       currentPage: null
     };
   }
@@ -51,11 +49,12 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
       currentPage: null
     });
   }
-  
+
   updatePages = () => {
     let updates = JSON.parse(client.perfHUD);
+
     let pages = this.state.pages.filter((t: PerfPage) => updates.filter((ut: PerfPage) => ut.id == t.id) == []).concat(updates) as Array<PerfPage>;
-    
+
     // is our current still here?
     let current: any = null;
     if (this.state.currentPage == null) {
@@ -66,7 +65,7 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
         current = pages[0];
       }
     }
-    
+
     this.setState({
       pages: pages,
       minimized: this.state.minimized,
@@ -82,18 +81,50 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
     });
   }
   
-  selectChanged = (evt: any) => {
-    let current = this.state.pages.filter((p: PerfPage) => p.id == parseInt(evt.target.value, 10))[0];
-      if (typeof current == 'undefined') {
-        current = this.state.pages[0];
-      }
-    this.setState({
-      pages: this.state.pages,
-      minimized: this.state.minimized,
-      currentPage: current
+  changePage = (id:number) => {
+    let current = this.state.pages[id];
+    this.changePerfPage(current);
+  }
+
+  changePerfPage = (page:PerfPage) => {
+      this.setState({
+        pages: this.state.pages,
+        minimized: false,
+        currentPage: page
     });
   }
-  
+  setMinimized = ( mini: boolean ) => {
+    this.setState({
+      pages: this.state.pages,
+      minimized: mini,
+      currentPage: this.state.currentPage
+    });
+  }
+
+  createPerfSelect = (page:PerfPage, index:any) => {
+    let currentPage:PerfPage = this.state.currentPage;
+    return (
+        <span key={index}
+              className={`${(page.id==currentPage.id)?'selected':''} perfhud-select-item`}
+              onClick={this.changePage.bind(this, page.id)} >{page.name}
+        </span>
+    )
+  }
+
+  createPerfMinimize = (min: boolean) => {
+    if(min)
+      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, false)}> &lt;&lt;&lt; </span> )
+    else
+      return ( <span className='perfhud-minimize' onClick={this.setMinimized.bind(this, true)}> &gt;&gt;&gt; </span> )
+  }
+
+  createPerfContent = (min: boolean) => {
+    if(min)
+      return (<span/>);
+    else
+      return (<div className='perfhud-content' dangerouslySetInnerHTML={{__html: this.state.currentPage.html}} />);
+  }
+
   render() {
     
     if (this.state.pages.length == 0) {
@@ -105,16 +136,16 @@ class PerfHud extends React.Component<PerfHudProps, PerfHudState> {
       </div>
       )
     }
-    
-    return (
+
+let mini = this.state.minimized;
+return (
       <div className={`${this.name} cu-window cu-window-transparent cu-window-auto-size`}>
         <div className='cu-window-content'>
-          <p>
-            <select onChange={this.selectChanged} value={this.state.currentPage.id + ''}>
-              {this.state.pages.map((page, index) => <option value={page.id + ''} key={index}>{page.name}</option>)}
-            </select>
-          </p>
-          <div className='html-content' dangerouslySetInnerHTML={{__html: this.state.currentPage.html}} />
+            <div className='perfhud-select'>
+              { this.createPerfMinimize(mini) }
+              {this.state.pages.map( (page, index) => this.createPerfSelect(page, index))}
+            </div>
+            { this.createPerfContent(mini) }
         </div>
       </div>
     );

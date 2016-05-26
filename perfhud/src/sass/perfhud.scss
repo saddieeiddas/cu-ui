@@ -11,55 +11,33 @@ body {
   overflow: hidden;
   cursor: default;
   height: 100%;
-  width: 100%;
+  width: 400px;
   margin: 0;
   font-family: sans-serif;
 }
 
-// .cu-window-content:before {
-//   opacity: 0.3 !important;
-// }
-
-.cu-window-content {
-  text-shadow: 0 0 2px #000 !important;
+.perfhud-select {
+  border-bottom: 2px solid lighten( $color-dark, 25% );
 }
 
-.perfhud-minimized {
-  width: 140px;
-  float: right;
-  .perfhud-content {
-    display: none;
-  }
+
+.perfhud-select-item {
+  padding: 5px;
+  display: inline-block;
+  border-right: 2px solid lighten( $color-dark, 25% );
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  margin-left: 5px;
+.perfhud-select-item:hover {
+  background-color: lighten( $color-dark, 25% );
 }
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-  border-radius: 5px;
+.perfhud-select-item.selected {
+  background-color: $color-dark;
+  color: $color-light;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-}
-
-::-webkit-scrollbar-corner {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-}
-
-select {
-  color: black !important;
-  option {
-    color: black !important;
-  }
-}
-
-.html-content {
-  margin: 0px;
-  padding: 0px;
+.perfhud-minimize {
+  padding: 5px;
+  display: inline-block;
+  border-right: 2px solid lighten( $color-dark, 25% );
 }
