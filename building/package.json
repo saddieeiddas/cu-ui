@@ -26,9 +26,6 @@
     "type": "git",
     "url": "https://github.com/csegames/cu-ui.git"
   },
-  "config": {
-    "name": "building"
-  },
   "scripts": {
     "postinstall": "npm run typings",
     "typings": "npm run clean:typings && typings install",
