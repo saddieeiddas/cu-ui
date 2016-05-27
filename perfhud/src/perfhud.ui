@@ -18,7 +18,7 @@
   "handlesEnemyTarget": false,
   "handlesEquippedGear": false,
   "handlesFriendlyTarget": false,
-  "handlesInput": false,
+  "handlesInput": true,
   "handlesInventory": false,
   "handlesLogging": false,
   "handlesLogin": false,
