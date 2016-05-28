@@ -3,9 +3,10 @@
 * License, v. 2.0. If a copy of the MPL was not distributed with this
 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-
-$cu-styles-root: '../../../interface-lib/camelot-unchained/styles/';
-@import "../../node_modules/camelot-unchained/lib/index.scss";
+$color-dark: #111111;
+$color-light: #efefef;
+$border-color: lighten( $color-dark, 25% );
+$hover-color: lighten( $color-dark, 10% );
 
 body {
   overflow: hidden;
@@ -14,52 +15,71 @@ body {
   width: 100%;
   margin: 0;
   font-family: sans-serif;
+  font-size: 12px;
+  color: $color-light;
 }
 
-// .cu-window-content:before {
-//   opacity: 0.3 !important;
-// }
-
-.cu-window-content {
-  text-shadow: 0 0 2px #000 !important;
+.cu-window {
+  background-color: rgba($color-dark, 0.25);
+}
+.cu-window-close {
+  font-size: 1.5rem;
+  text-shadow: 0 0 5px #000000;
+  color: #c4c4c4;
+  width: 12px;
+  text-align: center;
+  line-height: .75em;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 12px;
 }
 
-.perfhud-minimized {
-  width: 140px;
-  float: right;
-  .perfhud-content {
-    display: none;
-  }
+.cu-window-close:before, {
+  content: "\00D7";
+  position: absolute;
+  left: 0;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  margin-left: 5px;
+.cu-window-close:hover {
+  color: darken($color-light, 30%);
 }
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-  border-radius: 5px;
+.cu-window-close:hover {
+  text-shadow: 0 0 5px #6c0c00;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+.perfhud-select {
+  position: relative;
+  line-height: 1em;
+  border-bottom: 2px solid $border-color;
+  background-color: $color-dark;
 }
 
-::-webkit-scrollbar-corner {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+.perfhud-select-item {
+  padding: 2px 5px;
+  display: inline-block;
+  border-right: 2px solid $border-color;
 }
 
-select {
-  color: black !important;
-  option {
-    color: black !important;
-  }
+.perfhud-select-item:hover {
+  background-color: $hover-color;
 }
 
-.html-content {
-  margin: 0px;
-  padding: 0px;
+.perfhud-select-item.selected {
+  background-color: $border-color;
+}
+
+.perfhud-minimize {
+  padding: 2px 5px;
+  display: inline-block;
+  border-right: 2px solid $border-color;
+}
+
+.perfhud-minimize:hover {
+  background-color: $hover-color;
+}
+
+.perfhud-content {
+  font-size: 0.8em;
 }
