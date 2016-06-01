@@ -8,6 +8,7 @@ import {BuildPane, BuildPaneType} from '../../lib/BuildPane';
 import MaterialAndShape from '../../widgets/MaterialAndShape';
 import RecentSelections from '../../widgets/RecentSelections';
 import DropLight from '../../widgets/DropLight';
+import Blueprints from '../../widgets/Blueprints';
 
 const SELECT_TAB = 'buildpanel/panes/SELECT_TAB';
 
@@ -52,6 +53,14 @@ function generateBuildPane(type: BuildPaneType) : BuildPane {
         data: {},
         component: DropLight
       }
+    case BuildPaneType.Blueprints:
+      return {
+        type: type,
+        title: 'blueprints',
+        minTitle: 'blueprints',
+        data: {},
+        component: Blueprints
+      }
   }
 }
 
@@ -62,12 +71,15 @@ function generatePanes() : Array<Array<BuildPane>>{
   panes.push(new Array<BuildPane>());
   panes[1].push(generateBuildPane(BuildPaneType.Recent));
   panes.push(new Array<BuildPane>());
-  panes[2].push(generateBuildPane(BuildPaneType.DropLight));
+  panes[2].push(generateBuildPane(BuildPaneType.Blueprints));
+  panes.push(new Array<BuildPane>());
+  panes[3].push(generateBuildPane(BuildPaneType.DropLight));
   return panes;
 }
 
 function generateActiveIndices() : Array<number> {
   var activeIndices = new Array<number>();
+  activeIndices.push(0);
   activeIndices.push(0);
   activeIndices.push(0);
   activeIndices.push(0);
