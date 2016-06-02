@@ -1,13 +1,6 @@
 {
-  "name": "building",
-  "mainFile": "index.html",
-  "rect": {
-    "left": 0,
-    "top": 839,
-    "right": 67,
-    "bottom": 900
-  },
-  "handlesBuilding": true,
-  "handlesInput": true,
-  "layer": 1
+    "name": "building",
+    "mainFile": "index.html",
+    "handlesBuilding": true,
+    "handlesInput": true
 }
