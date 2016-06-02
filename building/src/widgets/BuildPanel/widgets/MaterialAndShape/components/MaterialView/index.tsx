@@ -6,7 +6,11 @@
 
 import * as React from 'react';
 
+import {Material} from '../../lib/Material';
+
 export interface MaterialViewProps {
+  onClick: () => void;
+  selectedMaterial: Material;
 }
 
 export interface MaterialViewState {
@@ -17,10 +21,11 @@ class MaterialView extends React.Component<MaterialViewProps, MaterialViewState>
   constructor(props: MaterialViewProps) {
     super(props);
   }
-
+  
   render() {
     return (
-      <div className='material-view'>
+      <div className='material-view' onClick={() => this.props.onClick()}>
+        <img src={`data:image/png;base64, ${this.props.selectedMaterial.icon}`} />
         <div className='icon-bg'>
           <svg className={`edit-icon`}
                viewBox='0 0 18 18'

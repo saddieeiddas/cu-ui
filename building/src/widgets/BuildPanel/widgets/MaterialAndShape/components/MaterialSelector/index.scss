@@ -4,5 +4,22 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-
+.material-and-shape__material-selector {
+  background-color: rgba(0,0,0,0.5);
+  width: 200px;
+  min-height: 100px;
+  position: absolute;
+  left: -205px;
+  top: 25px;
+  
+  img {
+    margin: 2.5px;
+    width: 2em;
+    height: 2em;
+    &:hover {
+      -webkit-filter: brightness(130%);
+      filter: brightness(130%);
+    }
+  }
+}
 

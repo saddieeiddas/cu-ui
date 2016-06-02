@@ -5,8 +5,7 @@
  */
 
 .build-panel__material-and-shape {
-  
-  
+  position: relative;
   header {
     color: #B0AAA6;
     text-transform: uppercase;
@@ -25,3 +24,4 @@
 
 @import './components/MaterialView/index';
 @import './components/ShapesView/index';
+@import './components/MaterialSelector/index';

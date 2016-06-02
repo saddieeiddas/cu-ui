@@ -5,39 +5,34 @@
  */
 
 import * as React from 'react';
-import {BuildPaneProps} from '../../lib/BuildPane';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+var thunk = require('redux-thunk').default;
 
-import MaterialView from './components/MaterialView';
-import ShapesView from './components/ShapesView';
+import reducer from './services/session/reducer';
+import MaterialAndShapePane from './components/MaterialAndShapePane';
 
-export interface MaterialAndShapeState {
+let store = createStore(reducer, applyMiddleware(thunk));
+
+let options = [
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' }
+];
+
+export interface ContainerProps {
 }
 
-class MaterialAndShape extends React.Component<BuildPaneProps, MaterialAndShapeState> {
+export interface ContainerState {
+}
 
-  constructor(props: BuildPaneProps) {
-    super(props);
-  }
-
+class Container extends React.Component<ContainerProps, ContainerState> {
   render() {
     return (
-      <div className='build-panel__material-and-shape'>
-       {
-         this.props.minimized ? null : (
-           <header>
-             <span>Material &amp; Shape</span>
-             <span className='build-panel__material-and-shape__menu'>...</span>
-           </header>
-         )
-       }
-        
-        <div className='content'>
-          <MaterialView />
-          <ShapesView minimized={this.props.minimized} />
-        </div>
-      </div>
+      <Provider store={store}>
+        <MaterialAndShapePane />
+      </Provider>
     )
   }
 }
 
-export default MaterialAndShape;
+export default Container;
