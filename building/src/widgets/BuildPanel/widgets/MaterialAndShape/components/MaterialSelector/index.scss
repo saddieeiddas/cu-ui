@@ -5,13 +5,14 @@
  */
 
 .material-and-shape__material-selector {
-  background-color: rgba(0,0,0,0.5);
+  background: linear-gradient(#131313, rgba(0, 0, 0, 0.8));
+  border: 1px solid #393634;
   width: 200px;
   min-height: 100px;
   position: absolute;
-  left: -205px;
-  top: 25px;
-  
+  left: -217px;
+  top: 20px;
+  padding: 10px;
   img {
     margin: 2.5px;
     width: 2em;
