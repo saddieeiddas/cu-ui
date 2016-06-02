@@ -51,6 +51,7 @@
     float: right;
     cursor: pointer;
     margin-right: 5px;
+    transition: all .1s ease-in-out;
     &:hover {
       color: white;
     }
@@ -73,7 +74,7 @@
       cursor: pointer;
     }
     .active {
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgb(16, 16, 16);
       cursor: default;
     }
   }

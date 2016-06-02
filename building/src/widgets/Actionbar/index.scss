@@ -7,7 +7,7 @@
  .action-bar {
    height: 330px;
    position: fixed;
-   left: 0;
+   left: -1px;
    top: calc(50% - 165px);   
    margin: auto;
    
@@ -31,7 +31,7 @@
    ul {
      list-style: none;
      margin: 0;
-     padding: 10px 5px;
+     padding: 5px;
      background: linear-gradient(#131313, rgba(0, 0, 0, 0.9));
      border-width: 1px;
      border-image: linear-gradient(to top left, rgba(75, 70, 66, 0.2), #4b4642);
@@ -41,6 +41,7 @@
    li {
      margin: 2px 0px;
      cursor: pointer;
+     text-align: center; 
    }
    
    em {

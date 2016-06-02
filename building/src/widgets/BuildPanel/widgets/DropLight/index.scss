@@ -15,8 +15,9 @@
   .drop-light__controls {
     display: inline-block;
     width: calc(100% - 60px);
-    padding: 0px 4px;
+    padding: 0px 0px 0px 7px;
     font-size: 14px;
+    vertical-align: top;
     input {
       color: #eaeaea;
       background: transparent;
@@ -24,6 +25,7 @@
       border-bottom: 1px solid #7C7269;
       width: 40px;
       text-align: center;
+      transition: all .1s ease-in-out;
       &:hover {
         border: 0;
         border-bottom: 1px solid #A99C90;
