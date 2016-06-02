@@ -17,12 +17,45 @@
   }
   
   li {
+    background: #131313;
+    padding: 4px;
+    transition: all 0.1s ease-in-out;
     &:hover {
-      background: rgba(0, 75, 150, 0.25);
+      -webkit-filter: brightness(1.5);
     }
   }
   
   .active {
-    background: rgba(0, 50, 175, 0.25);
+    -webkit-filter: brightness(1.5);
+  }
+}
+
+.BlueprintsPane {
+  padding: 5px;
+}
+
+button{
+  display: inline-block;
+  margin: 5px 5px 0px 0px;
+  min-width: 70px;
+  border: 1px solid #4b4642;
+  color: #756c67;
+  background: linear-gradient(to top, black, #2C2C2C);
+  box-shadow: inset black 0px 0px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  -webkit-filter: brightness(0.8);
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    -webkit-filter: brightness(1.2);
+  }   
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    -webkit-filter: brightness(.8)
   }
 }

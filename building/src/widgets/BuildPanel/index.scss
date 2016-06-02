@@ -9,6 +9,20 @@ header {
   cursor: default;
 }
 
+div::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+}
+
+div::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, transparent, rgba(255, 221, 188, 0.33), transparent);
+    border: none;
+    box-shadow: inset 0px 0px 20px rgba(84, 73, 58, 0.68);
+}
+
+div::-webkit-scrollbar-track {
+    background: rgb(29, 28, 27);
+}
 @import './components/BuildPanel/index';
 @import './widgets/MaterialAndShape/index';
 @import './widgets/RecentSelections/index';
