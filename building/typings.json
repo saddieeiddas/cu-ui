@@ -7,8 +7,7 @@
     "es6-promise": "github:CUModSquad/Typings/es6-promise/es6-promise.d.ts"
   },
   "dependencies": {
-    "camelot-unchained": "file:node_modules/camelot-unchained/definitions/index.d.ts",
-    "x-camelot-unchained": "github:csegames/camelot-unchained-client-library",
+    "camelot-unchained": "github:csegames/camelot-unchained-client-library",
     "react-redux": "github:andrew-w-ross/typings-react-redux#6be88a57427f8ec220cad13d68565fd5f5711146",
     "redux": "github:andrew-w-ross/typings-redux#2e0b57e18c6240d17fde045573d74e649762437b"
   }

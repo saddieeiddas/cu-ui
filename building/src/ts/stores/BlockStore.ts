@@ -29,9 +29,10 @@ export interface ShapeBlock {
 }
 
 export class BlockStore {
-  blockList: Block[] = [];
+  blockList: { [id: number]: Block; } = {};
   shapes: ShapeBlock[] = [];
   types: string[] = [];
+  numBlocksToLoad: number = 0;
 
   private addBlock = (id: number, icon: string): void => {
     this.blockList[id] = { id: id, icon: icon, shapes: [], types: [], shape: "", type: "" };
@@ -46,7 +47,7 @@ export class BlockStore {
       block.shape = tags.Shapes.join('-');
       block.types = tags.Types;
       block.type = tags.Types.join('-');
-      if (id === this.blockList.length - 1) {
+      if (--this.numBlocksToLoad === 0) {
         // finished loading shapes and types
         this.loaded();
       }
@@ -55,6 +56,9 @@ export class BlockStore {
   private listenBlocks = (): void => {
     client.OnReceiveBlocks((blocks: any) => {
       let key: any;
+      for (key in blocks) {
+        ++this.numBlocksToLoad;
+      }
       for (key in blocks) {
         this.addBlock(key|0, blocks[key]);
       }
@@ -75,7 +79,8 @@ export class BlockStore {
     let key: number = 0;
 
     // build up shape and type maps
-    this.blockList.forEach((block: Block) => {
+    for (var b in this.blockList) {
+      var block = this.blockList[b];
       const shape: string = block.shape;
       if (shapes[shape] === undefined) {
         shapes[shape] = {
@@ -89,7 +94,7 @@ export class BlockStore {
           types[type] = true;
         }
       })
-    });
+    }
 
     // build up shape icon list
     this.shapes = [];
@@ -108,7 +113,7 @@ export class BlockStore {
   // loads block details from the server
   public load = (): void => {
     store.dispatch({ type: 'LOAD_BLOCKS' });
-    this.blockList = [];
+    this.blockList = {};
     this.listenBlockTags();
     this.listenBlocks();
     client.RequestBlocks();
@@ -127,7 +132,8 @@ export class BlockStore {
     }
     const types: TypeBlock[] = [];
     // build up type icon list
-    this.blockList.forEach((block: Block) => {
+    for (var b in this.blockList) {
+      var block = this.blockList[b];
       if (!shape || block.shape === shape) {
         if (!keywords || !keywords.length || matches(block)) {
           types.push({
@@ -138,7 +144,7 @@ export class BlockStore {
           });
         }
       }
-    });
+    }
     return types;
   }
 
