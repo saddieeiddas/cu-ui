@@ -5,6 +5,7 @@
  */
 
 import * as React from 'react';
+import {client} from 'camelot-unchained';
 
 import ActionButton from './components/ActionButton';
 
@@ -35,7 +36,7 @@ class ActionBar extends React.Component<ActionBarProps, ActionBarState> {
   }
   
   onAdd() {
-    console.log('add');
+    client.CommitBlock();
   }
   
   onDelete() {
@@ -55,27 +56,27 @@ class ActionBar extends React.Component<ActionBarProps, ActionBarState> {
   }
   
   onRotX() {
-    console.log('rot x');
+    client.BlockRotateX();
   }
   
   onRotY() {
-    console.log('rot y');
+    client.BlockRotateY();
   }
   
   onRotZ() {
-    console.log('rot z');
+    client.BlockRotateZ();
   }
   
   onFlipX() {
-    console.log('flip x');
+    client.BlockFlipX();
   }
   
   onFlipY() {
-    console.log('flip y');
+    client.BlockFlipY();
   }
   
   onFlipZ() {
-    console.log('flip z');
+    client.BlockFlipZ();
   }
 
   render() {

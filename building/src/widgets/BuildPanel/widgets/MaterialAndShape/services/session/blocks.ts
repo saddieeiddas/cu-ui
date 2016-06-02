@@ -5,6 +5,7 @@
  */
 
 import {Block} from '../../lib/Block';
+import {client} from 'camelot-unchained';
 
 const SELECT_BLOCK = 'buildpanel/panes/SELECT_BLOCK';
 
@@ -49,6 +50,15 @@ function getBlocks() : [Block] {
       tags: ''
     },
   ];
+}
+
+let cuApi: any;
+
+export function blocksForMaterial(materialID: number, blocks: [Block]) : [Block] {
+  // get ids from client
+  // client.BlockIDsforSubstanceID
+  var ids = [1, 2, 3];
+  return blocks.filter((block: Block) => ids.indexOf(block.id) != -1) as [Block];
 }
 
 export interface BlocksState {
