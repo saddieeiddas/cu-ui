@@ -16,19 +16,45 @@ export function selectBP(id: number) {
 }
 
 
-function getBlueprints() : Array<Blueprint> {
-  return null;
+function getBlueprints() : [Blueprint] {
+  return [
+    {
+      id: 1,
+      icon: '',
+      name: 'blueprint one'
+    },{
+      id: 2,
+      icon: '',
+      name: 'blueprint two'
+    },{
+      id: 3,
+      icon: '',
+      name: 'blueprint three'
+    },{
+      id: 4,
+      icon: '',
+      name: 'blueprint four'
+    },{
+      id: 5,
+      icon: '',
+      name: 'blueprint five'
+    },{
+      id: 6,
+      icon: '',
+      name: 'blueprint six'
+    },
+  ];
 }
 
 
 export interface BlueprintsState {
-  blueprints?: Array<Blueprint>;
+  blueprints?: [Blueprint];
   selected?: number;
 }
 
 const initialState : BlueprintsState = {
   blueprints: getBlueprints(),
-  selected: -1,
+  selected: 1,
 }
 
 export default function reducer(state: BlueprintsState = initialState, action: any = {}) {

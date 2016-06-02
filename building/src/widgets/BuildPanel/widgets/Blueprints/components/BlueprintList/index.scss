@@ -1,0 +1,28 @@
+/**
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+.blueprints__list {
+  
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    &:hover {
+      background: rgba(0, 75, 150, 0.25);
+    }
+  }
+  
+  .active {
+    background: rgba(0, 50, 175, 0.25);
+  }
+}

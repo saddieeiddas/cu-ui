@@ -42,7 +42,6 @@ class BuildPanel extends React.Component<BuildPanelProps, BuildPanelState> {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className={`build-panel ${this.state.minimized ? 'minimized' : ''}`}>
         <header>
@@ -75,4 +74,3 @@ class BuildPanel extends React.Component<BuildPanelProps, BuildPanelState> {
 }
 
 export default connect(select)(BuildPanel);
-

@@ -5,68 +5,34 @@
  */
 
 import * as React from 'react';
-var Select = require('react-select');
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+var thunk = require('redux-thunk').default;
 
-import {Blueprint} from './lib/Blueprint';
+import reducer from './services/session/reducer';
+import BlueprintsPane from './components/BlueprintsPane';
+
+let store = createStore(reducer, applyMiddleware(thunk));
 
 let options = [
     { value: 'one', label: 'One' },
     { value: 'two', label: 'Two' }
 ];
 
-export interface BlueprintsProps {
-  minimized: boolean;
+export interface ContainerProps {
 }
 
-export interface BlueprintsState {
-  filter: any;
+export interface ContainerState {
 }
 
-class Blueprints extends React.Component<BlueprintsProps, BlueprintsState> {
-
-  constructor(props: BlueprintsProps) {
-    super(props);
-    this.state = {filter: null}
-  }
-  
-  onFilterChanged = (val: any) => {
-    console.log(val);
-    this.setState({filter: val} as any);
-  }
-  
-  generateBlueprintItem = (bp: Blueprint) => {
-    return (
-      <li key={bp.id}>
-        <span><img src={bp.icon} /></span><span>{bp.name}</span>
-      </li>
-    )
-  }
-
+class Container extends React.Component<ContainerProps, ContainerState> {
   render() {
     return (
-      <div className='blueprints'>
-        <div className='blueprints__filter'>
-          <div className='blueprints__filter__select'>
-            <Select name='form-field-name'
-                    placeholder='filter...'
-                    value={this.state.filter}
-                    options={options}
-                    onChange={this.onFilterChanged}
-                    multi
-                    simpleValue
-            />
-          </div>
-        </div>
-        
-        <div className='blueprints__list'>
-          <ul>
-            {this.}
-          </ul>
-        </div>
-        
-      </div>
+      <Provider store={store}>
+        <BlueprintsPane />
+      </Provider>
     )
   }
 }
 
-export default Blueprints;
+export default Container;
