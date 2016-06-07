@@ -23,41 +23,39 @@ export interface MotdData {
 
 class Motd extends React.Component<MotdProps, MotdState> {
 
-  private fadeTime:number = 500;
+  private fadeTime: number = 500;
 
   constructor(props: MotdProps) {
-    super( props );
+    super(props);
   }
 
   closeWindow(): void {
-    client.CloseUI( 'motd' );
+    client.CloseUI('motd');
   }
 
   onMessage = (data: MotdData) => {
-    if(data.message=='')
+    if (data.message == '')
       return;
 
-    console.log( "onMessage="+data.message );
-
-    this.setState( { message: data.message } );
+    this.setState({ message: data.message });
     var timeout = data.duration * 1000;
-    setTimeout(() => { this.setState( { message: '' } ); }, timeout );
-    setTimeout(() => { this.closeWindow(); }, timeout + this.fadeTime );
+    setTimeout(() => { this.setState({ message: '' }); }, timeout);
+    setTimeout(() => { this.closeWindow(); }, timeout + this.fadeTime);
   }
 
   onMessageFailed = (error: any) => {
-    console.log( error );
-      this.setState( { message: '' } );
+    console.log(error);
+    this.setState({ message: '' });
   }
 
   componentWillMount() {
-    this.setState( { message: '' } );
-    restAPI.getMessageOfTheDay().then( this.onMessage, this.onMessageFailed );
+    this.setState({ message: '' });
+    restAPI.getMessageOfTheDay().then(this.onMessage, this.onMessageFailed);
   }
 
   render() {
     let messageContent: any;
-    if ( this.state.message ) {
+    if (this.state.message) {
       messageContent = (
         <div className="alert">
           <span className='close' onMouseDown={this.closeWindow.bind(this)}></span>
