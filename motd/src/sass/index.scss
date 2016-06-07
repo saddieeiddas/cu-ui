@@ -18,15 +18,12 @@
   src: url('../../../interface-lib/camelot-unchained/styles/typography/fonts/merriweather_sans-normal-800.woff') format('woff');
 }
 
-
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
   font-family: 'Merriweather';
   font-weight: 300;
   color: #bdb5af;
-
 }
 
 .close {
@@ -59,11 +56,11 @@ html, body {
   box-sizing: border-box;
   position: relative;
   background: linear-gradient(to left, transparent,
-          rgba(0, 0, 0, 0.9) 3%,
+          rgba(0, 0, 0, 0.7) 3%,
           rgba(56, 47, 35, 1),
-          rgba(0, 0, 0, 0.9) 97%,
+          rgba(0, 0, 0, 0.7) 97%,
           transparent);
-  border: 1px rgba(255, 255, 255, 0.19) solid;
+  border: 1px rgba(255, 255, 255, 0.9) solid;
   border-width: 1px 0px;
   border-image: linear-gradient(to left, transparent, #6d6250, transparent);
   border-image-slice: 1;

@@ -10,5 +10,5 @@ import {events} from 'camelot-unchained';
 import Motd from './MotD';
 
 events.on('init', () => {
-    ReactDom.render(<Motd/>, document.getElementById("motd"));
+  ReactDom.render(<Motd/>, document.getElementById("motd"));
 });
