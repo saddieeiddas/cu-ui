@@ -3,9 +3,9 @@
   "mainFile": "index.html",
   "rect": {
     "left": 550,
-    "top": 600,
+    "top": 350,
     "right": 950,
-    "bottom": 800
+    "bottom": 550
   },
 
   "handlesAbilities": false,
